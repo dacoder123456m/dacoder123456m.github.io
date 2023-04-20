@@ -1,4 +1,9 @@
 window.onbeforeunload = function(){ return 1; };
+window.frames[‘frameA’].history.go(-1);
+document.getElementById("scroll-to-bottom").addEventListener("click", function () {
+  document.body.scrollIntoView(false);
+});
+
 const keySequence = [
     'a',
     'l',
@@ -12,6 +17,7 @@ window.addEventListener( 'keydown', ( { key } ) => {
     userInput = [ ...userInput.slice( 1 ), key ];
 
     if ( keySequence.every( ( v, k ) => v === userInput[ k ] ) ) {
-        window.location.replace("https://classroom.google.com/");;
+        window.close();
+        window.open("https://classroom.google.com/");
     }
 } );
